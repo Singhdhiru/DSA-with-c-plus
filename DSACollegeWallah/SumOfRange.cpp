@@ -7,35 +7,37 @@
 // Input :5 ->Number of elements in the array a
 // 5 1 2 3 4 ->All the elements (space separated)
 // outpot : sum from a[1] to a[5], i.e. 5+1+2+3+4=15
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <vector>
 using namespace std;
-int main(){
-    int n ;
-    cout<<"enter the size of vector"<<endl;
-    cin>>n;
-    vector<int> v(n+1,0); // 1 base indexing . sare mai 0 se intialize kar ke 1 position se
-     //element push kar denge
-    for(int i =1 ; i <= n ; i++){
-        cin>>v[i];
+int main()
+{
+    int n;
+    cout << "enter the size of vector" << endl;
+    cin >> n;
+    vector<int> v(n + 1, 0); // 1 base indexing . sare mai 0 se intialize kar ke 1 position se
+                             // element push kar denge
+    for (int i = 1; i <= n; i++)
+    {
+        cin >> v[i];
     }
-    cout<<endl;
+    cout << endl;
     // making a prefix sum array out of given array
-    for(int i = 1 ; i <= n ; i++){
-        v[i] += v[i-1];
+    for (int i = 1; i <= n; i++)
+    {
+        v[i] += v[i - 1];
     }
-    int q; // kitna bar alag alag l & r per answer usi ke liye q hi
-    cout<<"enter the no of queries"<<endl; // no of queries
-    cin>>q;
-    while(q--){
-       int l,r;
-       cin>>l;
-       cin>>r;
-       // ans = prefix_sum[r] - prefix_sum[l-1] uske bich ke sare element ka sum ans hogaa
-       int ans = 0 ;
-        ans = v[r] - v[l-1];
-       cout<<"ans->"<<ans<<endl;
+    int q;                                     // kitna bar alag alag l & r per answer usi ke liye q hi
+    cout << "enter the no of queries" << endl; // no of queries
+    cin >> q;
+    while (q--)
+    {
+        int l, r;
+        cin >> l;
+        cin >> r;
+        // ans = prefix_sum[r] - prefix_sum[l-1] uske bich ke sare element ka sum ans hogaa
+        int ans = 0;
+        ans = v[r] - v[l - 1];
+        cout << "ans->" << ans << endl;
     }
 }
-
-
