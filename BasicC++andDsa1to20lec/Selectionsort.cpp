@@ -1,5 +1,5 @@
 // implementation of selection sort
-// time complexity
+// time complexity-> O(n^2)
 // space complexity
 #include <iostream>
 using namespace std;
