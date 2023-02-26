@@ -1,0 +1,59 @@
+
+Question01->>Why Quick Sort is preferred over MergeSort for sorting Arrays ?
+Ans->>
+Quick sort and Merge sort are two popular sorting algorithms that can be used to sort arrays. Although both algorithms have the same average time complexity of O(nlogn), Quick sort is generally preferred over Merge sort for sorting arrays due to the following reasons:
+
+    Space complexity: Quick sort is an in-place sorting algorithm, meaning that it sorts the array in-place without requiring any additional memory space, while Merge sort requires additional memory space proportional to the size of the input array. In applications where memory space is limited or expensive, Quick sort is a better choice.
+
+    Cache efficiency: Quick sort is cache-friendly due to its in-place sorting behavior, which improves the algorithm's performance when dealing with large arrays. Merge sort, on the other hand, involves copying data between two arrays during the merging phase, which can negatively impact its cache efficiency.
+
+    Implementation simplicity: Quick sort is simpler to implement than Merge sort and requires fewer lines of code. This makes it a popular choice for implementing sorting algorithms in programming languages where code length and simplicity are important factors.
+
+    Practical performance: In practice, Quick sort performs better than Merge sort for most real-world data sets. Although Merge sort has a better worst-case time complexity than Quick sort, the worst-case scenario is rarely encountered in practice.
+
+Overall, Quick sort is preferred over Merge sort for sorting arrays due to its space efficiency, cache efficiency, simplicity, and practical performance. However, the choice of sorting algorithm depends on the specific application requirements and the characteristics of the input data set.
+
+
+Question02->>Is QuickSort In-place? 
+Ans->>Quick sort is generally considered an in-place sorting algorithm, meaning that it sorts the array in-place without requiring extra space proportional to the size of the input array.
+
+The basic idea behind the Quick sort algorithm is to partition the array around a pivot element, and then recursively sort the two resulting subarrays. This partitioning is done in-place by rearranging the elements of the array in such a way that all elements less than the pivot are moved to the left of the pivot, and all elements greater than or equal to the pivot are moved to the right of the pivot.
+
+Although Quick sort is usually implemented as an in-place algorithm, some variations of the algorithm may require additional memory space, such as in cases where the pivot is chosen randomly and stored separately. However, these variations are less commonly used and are not considered standard implementations of Quick sort.
+
+question03->>Why MergeSort is preferred over QuickSort for Linked Lists ? 
+Ans->>
+While Quick sort is generally preferred over Merge sort for sorting arrays, Merge sort is often preferred over Quick sort for sorting linked lists. This is because of the following reasons:
+
+    In-place sorting: Quick sort is an in-place sorting algorithm that requires swapping elements in the array, which can be complicated and time-consuming for linked lists. In contrast, Merge sort is a recursive algorithm that uses a divide-and-conquer approach and doesn't require swapping elements in the original list. Instead, Merge sort creates a new list by merging smaller sub-lists, which can be done efficiently with linked lists.
+
+    Stability: Merge sort is a stable sorting algorithm, which means that it maintains the relative order of equal elements in the input list. This is an important property when sorting linked lists, where preserving the order of equal elements is often required. Quick sort, on the other hand, is not a stable sorting algorithm and may change the relative order of equal elements during the sorting process.
+
+    Predictable performance: The worst-case time complexity of Merge sort is O(nlogn) for both arrays and linked lists, while the worst-case time complexity of Quick sort is O(n^2) for some input distributions. This makes Merge sort more predictable and reliable for sorting linked lists.
+
+    Recursion: Merge sort is a recursive algorithm that naturally fits the linked list data structure, which is also recursive in nature. The recursive nature of Merge sort simplifies the implementation and makes it more elegant for sorting linked lists.
+
+In summary, Merge sort is preferred over Quick sort for sorting linked lists due to its in-place sorting, stability, predictable performance, and recursive nature. However, the choice of sorting algorithm ultimately depends on the specific application requirements and the characteristics of the input data set.
+
+
+                Advantages of Quick Sort:
+It is a divide-and-conquer algorithm that makes it easier to solve problems.
+It is efficient on large data sets.
+It has a low overhead, as it only requires a small amount of memory to function.
+
+               Disadvantages of Quick Sort:
+
+It has a worst-case time complexity of O(n^2), which occurs when the pivot is chosen poorly.
+It is not a good choice for small data sets.
+It can be sensitive to the choice of pivot.
+It is not cache-efficient.
+It is not stable sort, meaning that if two elements have the same key, their relative order will not be preserved in the sorted output in case of quick sort, because here we swapping of elements according to pivot’s position (without considering their original positions).
+
+
+
+//! 
+SIGSEGV is a segmentation fault signal in C++ which indicates that the program has attempted to access a memory location that it is not allowed to access. This can happen for a number of reasons, such as dereferencing a null pointer, accessing an array outside its bounds, or attempting to modify a string literal.
+
+When a segmentation fault occurs, the operating system terminates the program and generates a core dump file, which contains a snapshot of the program's memory at the time of the crash. This can be useful for debugging the program and identifying the cause of the error.
+
+To prevent SIGSEGV errors, it is important to carefully manage memory usage in your program, use proper bounds checking when accessing arrays or pointers, and avoid writing to read-only memory, among other things. Good programming practices such as defensive programming, debugging, and testing can help catch these errors before they become a problem in production.

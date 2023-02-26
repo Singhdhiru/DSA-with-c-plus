@@ -1,0 +1,48 @@
+2d_array->A multi-dimensional array can be termed as an array of arrays that stores homogeneous data in tabular form. Data in multidimensional arrays are stored in row-major order.
+
+Two – dimensional array is the simplest form of a multidimensional array. We can see a two – dimensional array as an array of one-dimensional array for easier understanding. 
+
+The basic form of declaring a two-dimensional array of size x, y: 
+Syntax: 
+data_type array_name[x][y];
+
+Initializing Two – Dimensional Arrays: There are various ways in which a Two-Dimensional array can be initialized. 
+
+First Method: 
+int x[3][4] = {0, 1 ,2 ,3 ,4 , 5 , 6 , 7 , 8 , 9 , 10 , 11}
+The above array has 3 rows and 4 columns. The elements in the braces from left to right are stored in the table also from left to right. The elements will be filled in the array in order, the first 4 elements from the left in the first row, the next 4 elements in the second row, and so on.
+
+Second Method: 
+int x[3][4] = {{0,1,2,3}, {4,5,6,7}, {8,9,10,11}};
+
+Third Method:
+int x[3][4];
+for(int i = 0; i < 3; i++){
+    for(int j = 0; j < 4; j++){
+        cin >> x[i][j];
+    }
+}
+
+
+
+
+
+
+
+
+
+
+All Question->
+- Row-wise Input/Column wise input
+- Linear Search over 2D arrays
+- Row-wise Sum/Column wise Sum
+- Largest Row sum
+- Wave Print
+- Multiplication of Matrix
+- Transpose of matrix
+- Pascal's Triangle
+- Spiral Print
+- Transpose matrix
+- Rotate a Matrix by 90 degrees
+- Search in a 2D Matrix I LeetCode
+- Search in a 2D Matrix II LeetCode
