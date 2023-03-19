@@ -12,7 +12,7 @@ class Node {
     }
 };
 
-// Function to convert a single circular linked list into two circular linked lists
+// *Function to convert a single circular linked list into two circular linked lists
 void convertToLists(Node* head, Node** list1, Node** list2) {
     if (head == NULL) return;
 
@@ -61,10 +61,8 @@ void printList(Node* head) {
     } while (curr != head);
     cout << endl;
 }
-
-// Driver code to test the implementation
 int main() {
-    // Create a sample circular linked list with 6 nodes
+    //* Create a sample circular linked list with 6 nodes
     Node* head = new Node(1);
     head->next = new Node(2);
     head->next->next = new Node(3);
