@@ -1,35 +1,26 @@
-// What is map in C++ STL?
-// ?map in STL are associative containers where each element consists of a key value and a
-// mapped valueTwo mapped values cannot have the same key value.
-// Syntax:
-//? map<object_type,object_type> variable_name;
-
 #include <bits/stdc++.h>
+
 using namespace std;
+
 int main()
 {
-
-    // ? intialize map
-    map<int, int> mp;
-
-    // *take input ia map
-    for (int i = 1; i < 5; i++)
+    unordered_map<int, int> mp;
+    for (int i = 1; i <= 5; i++)
     {
-        mp.insert({i, i * 5});
+        mp.insert({i, i * 10});
     }
 
-    // ? print the element present in the map
+    cout << "Elements present in the map: " << endl;
+    cout << "Key\tElement" << endl;
     for (auto it = mp.begin(); it != mp.end(); it++)
     {
-        cout << it->first << " " << it->second << endl;
+        cout << it->first << "\t" << it->second << endl;
     }
 
-    // ?find function
     int n = 2;
     if (mp.find(2) != mp.end())
         cout << n << " is present in map" << endl;
 
-    // ? erase function
     mp.erase(mp.begin());
     cout << "Elements after deleting the first element: " << endl;
     cout << "Key\tElement" << endl;
@@ -45,5 +36,5 @@ int main()
     else
         cout << "The map is empty" << endl;
     mp.clear();
-    cout << "Size of the map after clearing all the elements: " << mp.size();
+    cout << "Size of the set after clearing all the elements: " << mp.size();
 }
