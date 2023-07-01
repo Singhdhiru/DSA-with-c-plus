@@ -1,5 +1,5 @@
 #include <iostream>
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 #include <stack>
 using namespace std;
 
@@ -17,26 +17,41 @@ struct Node
     }
 };
 
-vector<int> diagonalTraversal(Node* root){
-    vector<int> ans;
-    if (root == nullptr) {
-        return ans;
+void solve(Node *root, int sum, int &maxSum, int len, int &maxLen)
+{
+    // base case
+    if (root == NULL)
+    {
+
+        if (len > maxLen)
+        {
+            maxLen = len;
+            maxSum = sum;
+        }
+        else if (len == maxLen)
+        {
+            maxSum = max(sum, maxSum);
+        }
+        return;
     }
 
-    queue<Node*> q;
-    q.push(root);
-    while (!q.empty()) {
-        Node* temp = q.front();
-        q.pop();
-        while (temp) {
-            if (temp->left) {
-                q.push(temp->left);
-            }
-            ans.push_back(temp->data);
-            temp = temp->right;
-        }
-    }
-    return ans;
+    sum = sum + root->data;
+
+    solve(root->left, sum, maxSum, len + 1, maxLen);
+    solve(root->right, sum, maxSum, len + 1, maxLen);
+}
+
+int sumOfLongRootToLeafPath(Node *root)
+{
+    int len = 0;
+    int maxLen = 0;
+
+    int sum = 0;
+    int maxSum = INT_MIN;
+
+    solve(root, sum, maxSum, len, maxLen);
+
+    return maxSum;
 }
 void printTree(Node *node)
 {
@@ -65,11 +80,7 @@ int main()
     printTree(root);
     cout << endl;
 
-    cout << "diagonal Traversal-->> ";
-    vector<int> finalAns = diagonalTraversal(root);
-    for (auto i : finalAns)
-    {
-        cout << i << " ";
-    }
+    cout<<"sum of node on the longest path->> "<<sumOfLongRootToLeafPath(root);
+
     return 0;
 }
