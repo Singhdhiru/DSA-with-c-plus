@@ -17,54 +17,31 @@ struct Node
     }
 };
 
-Node* solve(Node* root, int &k, int node) {
-    //base case
-    if(root == NULL)
-        return NULL;
-        
-    if(root->data == node) 
-    {
-        return root;
-    }
-    
-    Node* leftAns = solve(root->left, k, node);
-    Node* rightAns = solve(root->right, k, node);
-
-
-    //wapas
-    if(leftAns != NULL && rightAns == NULL) 
-    {
-        k--;
-        if(k<=0) 
-        {
-            //answer lock
-            k = INT_MAX;
-            return root;
-        }
-        return leftAns;
-    }
-    
-    if(leftAns == NULL && rightAns != NULL) {
-        k--;
-        if(k<=0) 
-        {
-            //answer lock
-            k = INT_MAX;
-            return root;
-        }
-        return rightAns;
-    }
-    return NULL;
-    
-
-}
-int kthAncestor(Node *root, int k, int node)
+// Function to return the maximum sum of non-adjacent nodes.
+pair<int, int> solve(Node *root)
 {
-    Node* ans = solve(root, k, node);
-    if(ans == NULL || ans->data == node)
-        return -1;
-    else
-        return ans->data;
+    // base case
+    if (root == NULL)
+    {
+        pair<int, int> p = make_pair(0, 0);
+        return p;
+    }
+
+    pair<int, int> left = solve(root->left);
+    pair<int, int> right = solve(root->right);
+
+    pair<int, int> res;
+
+    res.first = root->data + left.second + right.second;
+
+    res.second = max(left.first, left.second) + max(right.first, right.second);
+
+    return res;
+}
+int getMaxSum(Node *root)
+{
+    pair<int, int> ans = solve(root);
+    return max(ans.first, ans.second);
 }
 void printTree(Node *node)
 {
@@ -93,9 +70,7 @@ int main()
     printTree(root);
     cout << endl;
 
-    int k = 2;
-    int givenNode = 7;
-    cout<<"kt ancestor of a node -->> "<<kthAncestor(root, k, givenNode);
+    int getMaxNonAdj = getMaxSum(root);
+    cout<<"Maximum sum of Non-adjacent nodes-->> "<<getMaxNonAdj<<endl;
     return 0;
 }
-
