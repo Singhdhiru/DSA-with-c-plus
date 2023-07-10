@@ -43,40 +43,29 @@ void levelOrderTraversal(Node* root){
         }
     }
 }
-void inorder(Node* root) {
-    //base case
-    if(root == NULL) {
-        return ;
+int solve(Node* root, int& i, int k){
+    // base case
+    if(root == NULL){
+        return -1;
     }
-
-    inorder(root->left);
-    cout << root-> data << " ";
-    inorder(root->right);
-
+    // L
+    int left = solve(root->left, i, k);
+    if(left != -1){
+        return left;
+    }
+    // N
+    i++;
+    if(i == k){
+        return root->data;
+    }
+    // R
+    return solve(root->right, i, k);
 }
 
-void preorder(Node* root) {
-    //base case
-    if(root == NULL) {
-        return ;
-    }
-
-    cout << root-> data << " ";
-    preorder(root->left);
-    preorder(root->right);
-
-}
-
-void postorder(Node* root) {
-    //base case
-    if(root == NULL) {
-        return ;
-    }
-
-    postorder(root->left);
-    postorder(root->right);
-    cout << root-> data << " ";
-
+int kthSmallest(Node* root, int k) {
+    int i = 0; // Initialize i to 0
+    int ans = solve(root, i , k);
+    return ans;
 }
 Node*  insertIntoBst(Node* root, int data){
     // base case
@@ -85,7 +74,7 @@ Node*  insertIntoBst(Node* root, int data){
         return root;
     }
     if(data> root->data){
-        //left part mai insert karna h
+        //right part mai insert karna h
         root->right = insertIntoBst(root->right, data);
     }
     else{
@@ -112,15 +101,6 @@ int main() {
     levelOrderTraversal(root);
     cout << endl;
 
-    cout<<"inorder traversal:";
-    inorder(root);
-    cout<<endl;
-
-    cout<<"preorder traversal:";
-    preorder(root);
-    cout<<endl;
-
-    cout<<"postorder traversal:";
-    postorder(root);
+    cout<<"k th smallest element in the BSt:"<<kthSmallest(root, 3)<<endl;
     return 0;
 }
