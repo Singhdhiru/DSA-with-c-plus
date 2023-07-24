@@ -21,26 +21,26 @@ void inorder(Node* root, vector<int>& in) {
     inorder(root->right, in);
 }
 
-// Function to perform postorder traversal and rebuild the tree as a min heap
+// Function to perform postorder traversal and rebuild the tree as a max heap
 void postorder(Node* root, vector<int>& in, int& index) {
     if (root == nullptr)
         return;
 
-    postorder(root->right, in, index);
     postorder(root->left, in, index);
+    postorder(root->right, in, index);
 
     root->data = in[index++];
 }
 
-// Function to convert the binary search tree to a min heap
-void convertToMinHeapUtil(Node* root) {
+// Function to convert the binary tree to a max heap
+void convertToMaxHeapUtil(Node* root) {
     vector<int> in;
     inorder(root, in);
     int index = 0;
     postorder(root, in, index);
 }
 
-// Function to print the tree using inorder traversal (to check the min heap conversion)
+// Function to print the tree using inorder traversal (to check the max heap conversion)
 void printInorder(Node* root) {
     if (root == nullptr)
         return;
@@ -51,22 +51,22 @@ void printInorder(Node* root) {
 }
 
 int main() {
-    // Create a sample binary search tree
-    Node* root = new Node(10);
-    root->left = new Node(5);
-    root->right = new Node(15);
-    root->left->left = new Node(2);
-    root->left->right = new Node(7);
-    root->right->left = new Node(12);
-    root->right->right = new Node(20);
+    // Create a sample binary tree
+    Node* root = new Node(4);
+    root->left = new Node(6);
+    root->right = new Node(2);
+    root->left->left = new Node(8);
+    root->left->right = new Node(5);
+    root->right->left = new Node(3);
+    root->right->right = new Node(1);
 
-    cout << "Original BST (inorder): ";
+    cout << "Original tree (inorder): ";
     printInorder(root);
     cout << endl;
 
-    convertToMinHeapUtil(root);
+    convertToMaxHeapUtil(root);
 
-    cout << "Min heap converted tree (inorder): ";
+    cout << "Max heap converted tree (inorder): ";
     printInorder(root);
     cout << endl;
 
