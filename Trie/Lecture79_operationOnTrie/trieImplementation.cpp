@@ -197,6 +197,58 @@ public:
             cout << "Word is not present in the trie" << endl;
         }
     }
+
+
+
+    //  void avoidDeleteKeyUtil(TrieNode *root, string key, int level)
+    // {
+    //     // Base case: If the key is empty, we've traversed the entire key
+    //     if (level == key.size())
+    //     {
+    //         if (root->isTerminal)
+    //         {
+    //             // If the current node represents the end of a word, mark it as non-terminal
+    //             root->isTerminal = false;
+    //         }
+    //         return;
+    //     }
+
+    //     // Assumption: keys will be in uppercase
+    //     int idx = key[level] - 'A';
+
+    //     // Check if the current node has the next character as its child
+    //     if (root->childern[idx] != NULL)
+    //     {
+    //         // Recursion to go to the next character in the key
+    //         avoidDeleteKeyUtil(root->childern[idx], key, level + 1);
+
+    //         // If the current node is not the end of another word and has no other children, we can delete it
+    //         if (!root->isTerminal)
+    //         {
+    //             bool canDelete = true;
+    //             for (int i = 0; i < 26; i++)
+    //             {
+    //                 if (root->childern[i] != NULL)
+    //                 {
+    //                     canDelete = false;
+    //                     break;
+    //                 }
+    //             }
+
+    //             if (canDelete)
+    //             {
+    //                 // Delete the node and set the pointer to NULL
+    //                 delete root->childern[idx];
+    //                 root->childern[idx] = NULL;
+    //             }
+    //         }
+    //     }
+    // }
+
+    // void avoidDeleteKey(string key)
+    // {
+    //     avoidDeleteKeyUtil(root, key, 0);
+    // }
 };
 int main()
 {
