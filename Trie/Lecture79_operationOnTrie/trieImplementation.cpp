@@ -89,13 +89,13 @@ public:
         // recursion
         return searchUtil(child, word.substr(1));
     }
-    bool  searchword(string word)
+    bool searchword(string word)
     {
         return searchUtil(root, word);
     }
 
     // print the word present in the trie
-        void printWordsUtil(TrieNode *root, string currentWord)
+    void printWordsUtil(TrieNode *root, string currentWord)
     {
         if (root->isTerminal)
         {
@@ -110,10 +110,92 @@ public:
             }
         }
     }
-
     void printWords()
     {
         printWordsUtil(root, "");
+    }
+
+    // Delete a word from the trie
+    bool deleteUtil(TrieNode *root, string word, int level)
+    {
+        // Base case
+        if (level == word.size())
+        {
+            if (root->isTerminal)
+            {
+                root->isTerminal = false;
+
+                // Check if the node has no other children
+                for (int i = 0; i < 26; i++)
+                {
+                    if (root->childern[i] != NULL)
+                    {
+                        return false;
+                    }
+                }
+
+                // If no children, then delete this node
+                delete root;
+                return true;
+            }
+            return false;
+        }
+
+        // Assumption: words will be in uppercase
+        int idx = word[level] - 'A';
+
+        // Present
+        if (root->childern[idx] != NULL)
+        {
+            // Recursion
+            bool shouldDeleteChild = deleteUtil(root->childern[idx], word, level + 1);
+
+            if (shouldDeleteChild)
+            {
+                // Delete the child node and set the pointer to NULL
+                delete root->childern[idx];
+                root->childern[idx] = NULL;
+
+                // Check if the current node has no other children and not a terminal node
+                if (root->isTerminal)
+                {
+                    return false;
+                }
+
+                for (int i = 0; i < 26; i++)
+                {
+                    if (root->childern[i] != NULL)
+                    {
+                        return false;
+                    }
+                }
+
+                // If no children and not a terminal node, then delete this node
+                delete root;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    void deleteWord(string word)
+    {
+        bool isPresent = searchword(word);
+        if (isPresent)
+        {
+            if (deleteUtil(root, word, 0))
+            {
+                cout << "Element is deleted" << endl;
+            }
+            else
+            {
+                cout << "Failed to delete element" << endl;
+            }
+        }
+        else
+        {
+            cout << "Word is not present in the trie" << endl;
+        }
     }
 };
 int main()
@@ -123,8 +205,11 @@ int main()
     t->insertword("TIME");
     t->insertword("CAT");
 
-    cout<<" word present word or not: "<<t->searchword("TIM")<<endl;
+    cout << " word present word or not: " << t->searchword("TIM") << endl;
+    cout<<"word present in trie: ";
+    t->printWords();
 
+    t->deleteWord("TIME");
     t->printWords();
     return 0;
 }
