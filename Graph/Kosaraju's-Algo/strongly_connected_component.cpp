@@ -36,8 +36,15 @@ public:
     // Function to find number of strongly connected components in the graph.
     int kosaraju(int V, vector<int> adj[])
     {
+
+        /*it includes 3 steps-
+        dfs trversal ->> push the node according to its finishing time 
+        Transpose of graph ->>> reverse the graph
+        dfs call for finding count
+        */
         vector<int> vis(V, 0);
         stack<int> st;
+        // step 01 -> push node basis of finishing time
         for (int i = 0; i < V; i++)
         {
             if (!vis[i])
@@ -45,7 +52,7 @@ public:
                 dfs(i, vis, adj, st);
             }
         }
-
+            // step ->02 reverse  the node 
         vector<int> adjT[V];
         for (int i = 0; i < V; i++)
         {
@@ -57,6 +64,7 @@ public:
                 adjT[it].push_back(i);
             }
         }
+        // step ->03 again do dfs traversal
         int scc = 0;
         while (!st.empty())
         {
