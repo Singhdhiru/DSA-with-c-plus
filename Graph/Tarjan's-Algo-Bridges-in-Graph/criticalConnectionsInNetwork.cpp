@@ -4,8 +4,7 @@ using namespace std;
 class Solution {
 private:
     int timer = 1;
-    void dfs(int node, int parent, vector<int> &vis,
-             vector<int> adj[], int tin[], int low[], vector<vector<int>> &bridges) {
+    void dfs(int node, int parent, vector<int> &vis, vector<int> adj[], int tin[], int low[], vector<vector<int>> &bridges) {
         vis[node] = 1;
         tin[node] = low[node] = timer;
         timer++;
