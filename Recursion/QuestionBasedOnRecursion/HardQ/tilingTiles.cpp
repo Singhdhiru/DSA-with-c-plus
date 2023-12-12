@@ -22,3 +22,4 @@ int main() {
     cout<<"no of ways to place tiles"<<" "<<placeTiles(n,m)<<endl;
     return 0;
 }
+// use dp to reduce time t.E
