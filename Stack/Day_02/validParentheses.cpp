@@ -39,7 +39,6 @@ bool validParentheses(string exp)
                 }
         }
     }
-
     if(st.empty()){
         return true;
     }
