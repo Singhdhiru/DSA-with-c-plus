@@ -2,6 +2,20 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// Recursion code give me tle
+// int f(int i,  int j){
+    // base case 
+    // if i & j dono 0 ho toh 1 return kr do  kyuki first cell mai pahuch gaye hi
+//     if(i ==0 && j == 0){
+//         return 1;
+//     }
+//     if(i<0 || j<0){
+//         return 0;
+//     }
+//     int up = f(i-1, j);
+//     int left = f(i, j-1);
+//     return up+left;
+// }
 // Recursive function to count the number of ways to reach (i, j) from (0, 0)
 // in a grid of size m x n
 int countWaysUtil(int i, int j, vector<vector<int>> &dp)
@@ -40,7 +54,7 @@ int countWays(int m, int n)
 int main()
 {
     int m = 3;
-    int n = 2;
+    int n = 3;
 
     // Call the countWays function and print the result.
     cout << "Number of ways to reach (" << m - 1 << ", " << n - 1 << "): " << countWays(m, n) << endl;
