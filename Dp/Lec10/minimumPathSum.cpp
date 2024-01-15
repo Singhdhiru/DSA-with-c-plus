@@ -2,7 +2,28 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Helper function to find the minimum sum path from (i, j) to (0, 0) in the matrix
+// recursion code-> tle
+int solve(int i, int j, vector<vector<int>> &grid)
+{
+    // base case
+    if (i == 0 && j == 0)
+    {
+        return grid[0][0];
+    }
+    if (i < 0 || j < 0)
+    {
+        return 1e9;
+    }
+    // if(dp[i][j] != -1){
+    //     return dp[i][j];
+    // }
+    int up = grid[i][j] + solve(i - 1, j, grid);
+    int left = grid[i][j] + solve(i, j - 1, grid);
+    return min(up, left);
+}
+
+// memoization code
+
 int minSumPathUtil(int i, int j, vector<vector<int>> &matrix, vector<vector<int>> &dp)
 {
     // Base cases
