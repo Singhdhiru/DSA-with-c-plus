@@ -3,6 +3,18 @@
 using namespace std;
 
 // Recursion code
+// time complexity->> exponential
+// space complexity->> O(n*n)->recursion call stack
+int solve(int i, int j, int n, vector<vector<int>> &triangle){
+    // ? base case
+    if(i == n-1){
+        return triangle[i][j];
+    }
+    int down = triangle[i][j]+solve(i+1, j, n,triangle);
+    int diagonal = triangle[i][j]+solve(i+1, j+1, n, triangle);
+    return min(down,diagonal);
+}
+
 
 // Memoization code->> 
 /*
@@ -41,6 +53,9 @@ int minimumPathSum(vector<vector<int>> &triangle, int n)
     vector<vector<int>> dp(n, vector<int>(n, -1));
     // Call the recursive function to find the minimum path sum
     return minimumPathSumUtil(0, 0, triangle, n, dp);
+
+    // ? recursion function call
+    // return solve(0, 0,n,triangle);
 }
 
 int main()
