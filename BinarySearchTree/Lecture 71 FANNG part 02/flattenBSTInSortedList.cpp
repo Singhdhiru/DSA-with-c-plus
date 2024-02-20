@@ -61,6 +61,7 @@ void inorder(Node* root, vector<int>&in){
     in.push_back(root->data);
     inorder(root->right, in);
 }
+// ? Approach 1 -> using Extra space 
 Node* flatten(Node* root)
 {
     vector<int> inorderVal;
@@ -84,6 +85,42 @@ Node* flatten(Node* root)
     curr->left = NULL;
     curr->right = NULL;
     return newRoot;
+}
+// * Approch 2 -> Fllowup Question at gfg ->>   without using any extra storage
+/*
+MY YOUTUBE VIDEO ON THIS Qn : https://www.youtube.com/watch?v=NzXtnzQTouk
+    Company Tags                : Amazon, Adobe
+    GFG Link                    : https://www.geeksforgeeks.org/problems/flatten-bst-to-sorted-list--111950/1
+*/
+//T.C : O(n^2)
+//S.C : Auxiliary Space is O(1) and Stack Space due to recursion is O(n)
+Node* flattenBst(Node* root){
+    // * base case
+    if(root == NULL){
+        return NULL;
+    }
+    // ? root ke left ko pahle flat kar lenge
+    Node* head = flattenBst(root->left);
+    // ? root pahle left mai point kr raha tha ab uska left ko NULL point kra dunga 
+    root->left = NULL;
+    // ? root ke right ko uske right mai flatt kar ke aayega use link kr dunga
+    root->right = flattenBst(root->right);
+
+    // ? left flat ho chuka aur head ko piont bhi kr raha ham ham left flat mai traverse kar ke tail per jaunga aur tail ke right ko root per point kra dunga
+
+    if(head){
+        Node* temp = head;
+        while(temp && temp->right){
+            temp = temp->right;
+        }
+        temp->right = root;
+    }
+    else{
+        //? If head is NULL, root becomes the head ->> jab rooot ke left mai kuch ho hina
+        // head ko root bna dunga aur root kp right flat se add kr dunga
+        head = root;
+    }
+    return head;
 }
 Node *insertIntoBst(Node *root, int data)
 {
@@ -127,7 +164,7 @@ int main()
     cout << endl;
 
     // Flatten the binary tree
-    Node* flattenedRoot = flatten(root);
+    Node* flattenedRoot = flattenBst(root);
 
     // Print the flattened tree
     cout << "Flattened tree: " << endl;

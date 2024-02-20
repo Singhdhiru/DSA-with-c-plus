@@ -15,7 +15,9 @@ public:
     }
 };
 
-// ? recursive code
+//*Approach-1 (Recursion)
+//T.C : O(m+n) - total number of nodes
+//S.C : O(1) (ignoring recursive stack space)
 Node *solve(Node *list1, Node *list2)
 {
     // ? base case
@@ -45,7 +47,9 @@ Node *solve(Node *list1, Node *list2)
     return result;
 }
 
-// ? iterative solution
+//*Approach-2 (Iterative)
+//T.C : O(m+n) - total number of nodes
+//S.C : O(1)
 Node *mergeLists(Node *first, Node *second)
 {
     if (first->next == NULL)
