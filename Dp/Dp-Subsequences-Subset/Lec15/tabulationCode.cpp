@@ -1,15 +1,15 @@
 #include <bits/stdc++.h>
 using namespace std;
 /*
-Time Complexity: O(N*K) +O(N)
+*Time Complexity: O(N*K) +O(N)
 
 Reason: There are two nested loops that account for O(N*K) and at starting we are running a for loop to calculate totSum.
 
-Space Complexity: O(N*K)
+*Space Complexity: O(N*K)
 
 Reason: We are using an external array of size ‘N*K’. Stack Space is eliminated.
 */
-// Function to check if it's possible to partition the array into two subsets with equal sum
+
 bool canPartition(int n, vector<int> &arr)
 {
     int totSum = 0;

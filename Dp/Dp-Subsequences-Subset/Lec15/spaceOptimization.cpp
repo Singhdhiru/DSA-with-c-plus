@@ -9,7 +9,7 @@ Space Complexity: O(K)
 
 Reason: We are using an external array of size ‘K+1’ to store only one row.
 */
-// Function to check if it's possible to partition the array into two subsets with equal sum
+
 bool canPartition(int n, vector<int>& arr) {
     int totSum = 0;
 
