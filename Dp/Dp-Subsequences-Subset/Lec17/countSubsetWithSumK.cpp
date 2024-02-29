@@ -10,7 +10,7 @@ Reason: There are N*K states therefore at max ‘N*K’ new problems will be sol
 
 Reason: We are using a recursion stack space(O(N)) and a 2D array ( O(N*K)).
 */
-//? Function to count the number of subsets with a given sum
+// ! ye code fail ho jayega agar constrain 0<= arr[i] per striver ne 1<<arr[i] tak banaya hi isko fix karne ke liye ->> modifiedQuestion wale file mai dekho
 int findWaysUtil(int ind, int target, vector<int>& arr, vector<vector<int>>& dp) {
     // Base case: If the target sum is 0, we found a valid subset
     if (target == 0)
