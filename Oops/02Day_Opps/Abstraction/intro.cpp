@@ -21,4 +21,4 @@ int main(){
     obj.print();
 
 }
-// * https://stackoverflow.com/questions/742341/difference-between-abstraction-and-encapsulation
+// * https://stackoverflow.com/questions/742341/difference-between-abstraction-and-encapsulation 
