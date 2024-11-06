@@ -4,7 +4,9 @@
 
 using namespace std;
 
-// Approach-> 1st
+//* Approach-> 1st
+// * TC-> O(n^2)
+//* SC-> O(n)
 class Solution
 {
 public:
