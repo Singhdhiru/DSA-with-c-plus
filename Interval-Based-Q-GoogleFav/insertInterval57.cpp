@@ -43,7 +43,8 @@ vector<vector<int>> insert(vector<vector<int>> &intervals, vector<int> &newInter
 
     while (i < intervals.size()) // her baar interval ka size chhota hoga
     {
-        if (intervals[i][1] < newInterval[0])
+        // * jo newInterval hi o overllap nahi kar raha hi usko ans mai daal do
+        if (intervals[i][1] < newInterval[0])  // ending[i] < newInterval[0]->starting
         {
             result.push_back(intervals[i]);
         }
@@ -61,6 +62,7 @@ vector<vector<int>> insert(vector<vector<int>> &intervals, vector<int> &newInter
     }
 
     result.push_back(newInterval);
+    // * mai jo interval bacha hi usko dall do
     while (i < intervals.size())
     {
         result.push_back(intervals[i]);
