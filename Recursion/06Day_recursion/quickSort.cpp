@@ -9,7 +9,7 @@ int partitaion(int arr[], int s, int e)
 
     int pivot = arr[s]; //* fist element ko pivot maan liya
     int count = 0;      //* ye count karega kinta element small hi pivot se
-    for (int i = s+1; i <= e; i++)
+    for (int i = s + 1; i <= e; i++)
     {
         if (arr[i] <= pivot)
         {
@@ -66,7 +66,7 @@ int main()
     int arr[] = {78, 90, 99, 88, 4, 56, 34, 33, 45, 6, 0};
     int n = sizeof(arr) / sizeof(arr[0]);
 
-    quickSort(arr, 0, n-1);
+    quickSort(arr, 0, n - 1);
     // * print the value
     for (int i = 0; i < n; i++)
     {
